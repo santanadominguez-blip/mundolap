@@ -16,10 +16,16 @@ mx.mundolap
 ├── App.java            Arma el sistema: crea piezas, las conecta y registra los módulos.
 ├── compartido/         Lo común: roles, estados, menú, plantillas, utilidades.
 │   └── web/            Servidor, rutas (Router), sesiones. Única parte que "sabe" de HTTP.
-├── acceso/             P-01 Login, P-05 Panel
+├── acceso/             P-01 Inicio de sesión, P-05 Panel
 ├── clientes/           P-06 Clientes
 ├── equipos/            P-07 Registrar equipo
-├── ordenes/            P-08 Nueva orden (con folio)
+├── ordenes/            P-08 Nueva orden (con folio) y P-10 Entrega (solo vista)
+├── pagos/              P-09 Pagos (solo vista)
+├── tecnico/            P-11 Mis órdenes y P-12 Detalle de orden (solo vista)
+├── refacciones/        P-13 Solicitar refacción (solo vista)
+├── usuarios/           P-14 Administración de usuarios (solo vista)
+├── caja/               P-15 Cierre de caja (solo vista)
+├── reportes/           P-16 Reportes y P-17 Metas (solo vista)
 └── demo/               Datos de ejemplo (se borra al conectar la BD)
 src/main/resources/vistas/   Las pantallas (HTML) de cada módulo
 src/main/resources/static/   CSS y JS
