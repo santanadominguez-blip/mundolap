@@ -1,0 +1,42 @@
+<!-- P-17 Configurar metas de productividad (PRY03, pág. 80). FASE ACTUAL: solo la vista.
+     Para activar la funcionalidad: quitar onsubmit, habilitar "Guardar metas", llenar "Metas vigentes" y
+     registrar la ruta POST /metas/guardar. -->
+<form class="formulario" method="post" action="/metas/guardar" onsubmit="return false;">
+    <div class="campo">
+        <label for="metaOrdenes">Meta de órdenes por técnico</label>
+        <input id="metaOrdenes" name="metaOrdenes" type="number" min="1" step="1">
+    </div>
+    <div class="campo">
+        <label for="metaTiempo">Meta de tiempo promedio de reparación (días)</label>
+        <input id="metaTiempo" name="metaTiempo" type="number" min="0" step="0.1">
+    </div>
+    <div class="campo">
+        <label for="periodoMeta">Periodo de la meta</label>
+        <select id="periodoMeta" name="periodoMeta">
+            <option value="SEMANAL">Semanal</option>
+            <option value="MENSUAL">Mensual</option>
+        </select>
+    </div>
+
+    <div class="campo-ancho">
+        <h2>Metas vigentes</h2>
+        <div class="tabla-envoltura">
+            <table>
+                <thead><tr><th>Meta</th><th>Valor</th><th>Periodo</th><th>Registrada</th></tr></thead>
+                <tbody>
+                    <tr><td colspan="4" class="vacio">Aún no hay metas guardadas.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Mensaje de validación (elemento 5): oculto hasta que exista la lógica (RF-63). -->
+    <div id="mensajeValidacion" class="alerta alerta-advertencia campo-ancho" role="alert" hidden>
+        Los valores deben ser números mayores que cero.
+    </div>
+
+    <div class="botones">
+        <button class="btn btn-primario" type="button" disabled>Guardar metas</button>
+        <a class="btn btn-secundario" href="/reportes">Cancelar</a>
+    </div>
+</form>

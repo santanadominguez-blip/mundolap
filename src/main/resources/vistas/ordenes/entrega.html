@@ -1,0 +1,52 @@
+<!-- P-10 Entrega de equipo y comprobante (PRY03, págs. 70-71). FASE ACTUAL: solo la vista.
+     Para activar la funcionalidad: quitar onsubmit, habilitar los botones y registrar las rutas POST necesarias. -->
+<form class="formulario" method="post" action="/ordenes/entregar" onsubmit="return false;">
+    <div class="campo campo-ancho">
+        <label for="folio">Folio de la orden</label>
+        <div class="con-boton">
+            <input id="folio" name="folio" type="text" value="{{folio}}" placeholder="Ejemplo: OS-0001">
+            <button class="btn" type="button" disabled>Buscar</button>
+        </div>
+    </div>
+
+    <section class="tarjeta campo-ancho">
+        <dl class="datos">
+            <dt>Cliente</dt><dd>—</dd>
+            <dt>Equipo</dt><dd>—</dd>
+            <dt>Estado actual</dt><dd>—</dd>
+            <dt>Saldo pendiente</dt><dd>—</dd>
+            <dt>Entrega (fecha y usuario)</dt><dd>—</dd>
+        </dl>
+    </section>
+
+    <div class="campo-ancho">
+        <h2>Desglose del costo</h2>
+        <div class="tabla-envoltura">
+            <table>
+                <thead><tr><th>Concepto</th><th>Importe</th></tr></thead>
+                <tbody>
+                    <tr><td>Diagnóstico</td><td>—</td></tr>
+                    <tr><td>Mano de obra</td><td>—</td></tr>
+                    <tr><td>Refacciones</td><td>—</td></tr>
+                    <tr><td><strong>Total</strong></td><td><strong>—</strong></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="campo campo-ancho">
+        <label><input id="requiereFactura" name="requiereFactura" type="checkbox" value="1" class="casilla"> Cliente requiere factura</label>
+    </div>
+
+    <!-- Mensaje de bloqueo (elemento 7): oculto hasta que exista la lógica (RF-43). -->
+    <div id="mensajeBloqueo" class="alerta alerta-advertencia campo-ancho" role="alert" hidden>
+        No se puede entregar: la orden tiene saldo pendiente.
+    </div>
+
+    <div class="botones">
+        <a class="btn btn-secundario" href="/pagos">Registrar pago</a>
+        <button class="btn btn-primario" type="button" disabled>Confirmar entrega</button>
+        <button class="btn btn-primario" type="button" disabled>Generar comprobante</button>
+        <button class="btn" type="button" disabled>Generar factura</button>
+    </div>
+</form>

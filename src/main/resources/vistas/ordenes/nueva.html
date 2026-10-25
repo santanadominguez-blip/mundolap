@@ -1,0 +1,47 @@
+{{{alertaHtml}}}
+<form class="formulario" method="post" action="/ordenes/generar">
+  <input type="hidden" name="idCliente" value="{{idCliente}}">
+
+  <div class="campo">
+    <label for="cliente">Cliente</label>
+    <input id="cliente" type="text" value="{{clienteNombre}}" readonly>
+  </div>
+  <div class="campo">
+    <label for="idEquipo">Equipo</label>
+    <select id="idEquipo" name="idEquipo">{{{equiposHtml}}}</select>
+  </div>
+  <div class="campo campo-ancho">
+    <label for="problemaReportado">Problema reportado *</label>
+    <textarea id="problemaReportado" name="problemaReportado" rows="4" required>{{problema}}</textarea>
+  </div>
+  <div class="campo">
+    <label for="prioridad">Prioridad</label>
+    <select id="prioridad" name="prioridad">{{{prioridadesHtml}}}</select>
+  </div>
+  <div class="campo">
+    <label for="fechaEntregaEstimada">Fecha de entrega estimada *</label>
+    <input id="fechaEntregaEstimada" name="fechaEntregaEstimada" type="date" min="{{hoy}}" value="{{fechaEntrega}}" required>
+  </div>
+  <div class="campo">
+    <label for="fechaRecepcion">Fecha de recepción</label>
+    <input id="fechaRecepcion" type="text" value="{{fechaRecepcion}}" readonly>
+  </div>
+  <div class="campo">
+    <label for="costo">Costo estimado</label>
+    <input id="costo" type="text" value="{{costo}}" readonly>
+  </div>
+  <div class="campo">
+    <label for="estado">Estado inicial</label>
+    <input id="estado" type="text" value="Recibido" readonly>
+  </div>
+  <div class="campo">
+    <label for="folio">Folio</label>
+    <input id="folio" type="text" value="Se asigna al generar la orden" readonly>
+  </div>
+
+  <div class="botones">
+    <button class="btn btn-primario" type="submit">Generar orden</button>
+    <a class="btn btn-secundario" href="/panel">Cancelar</a>
+  </div>
+</form>
+<script src="/static/js/orden-nueva.js"></script>

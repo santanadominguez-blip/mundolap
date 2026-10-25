@@ -1,0 +1,72 @@
+<!-- P-12 Detalle de orden: diagnóstico, estado, pruebas y piezas (PRY03, págs. 73-74). FASE ACTUAL: solo la vista.
+     Para activar la funcionalidad: quitar onsubmit, habilitar los botones, habilitar "Pruebas de funcionamiento"
+     al finalizar la reparación y registrar las rutas POST necesarias. -->
+<form class="formulario" method="post" action="/mis-ordenes/guardar" onsubmit="return false;">
+    <input type="hidden" name="folio" value="{{folioTxt}}">
+
+    <section class="tarjeta campo-ancho">
+        <dl class="datos">
+            <dt>Folio</dt><dd>{{folioTxt}}</dd>
+            <dt>Cliente</dt><dd>—</dd>
+            <dt>Equipo</dt><dd>—</dd>
+            <dt>Fecha de recepción</dt><dd>—</dd>
+        </dl>
+    </section>
+
+    <div class="campo">
+        <label for="problemaReportado">Problema reportado</label>
+        <input id="problemaReportado" type="text" value="—" readonly>
+    </div>
+    <div class="campo">
+        <label for="estadoOrden">Estado de la orden</label>
+        <select id="estadoOrden" name="estadoOrden">
+            <option value="RECIBIDO">Recibido</option>
+            <option value="PENDIENTE">Pendiente</option>
+            <option value="EN_REPARACION">En reparación</option>
+            <option value="ESPERANDO_PIEZAS">Esperando piezas</option>
+            <option value="TERMINADO">Terminado</option>
+            <option value="ENTREGADO">Entregado</option>
+        </select>
+    </div>
+
+    <div class="campo">
+        <label for="falla">Falla identificada</label>
+        <textarea id="falla" name="falla" rows="4"></textarea>
+    </div>
+    <div class="campo">
+        <label for="actividades">Actividades a realizar</label>
+        <textarea id="actividades" name="actividades" rows="4"></textarea>
+    </div>
+    <div class="campo campo-ancho">
+        <label for="pruebas">Pruebas de funcionamiento</label>
+        <textarea id="pruebas" name="pruebas" rows="3" disabled></textarea>
+    </div>
+
+    <div class="campo-ancho">
+        <h2>Piezas utilizadas</h2>
+        <div class="tabla-envoltura">
+            <table>
+                <thead><tr><th>Pieza</th><th>Cant.</th></tr></thead>
+                <tbody>
+                    <tr><td colspan="2" class="vacio">Aún no se han agregado piezas.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="botones">
+        <button class="btn" type="button" disabled>+ Agregar pieza</button>
+    </div>
+
+    <!-- Mensaje de validación (elemento 8): oculto hasta que exista la lógica (RF-22, RF-23). -->
+    <div id="mensajeValidacion" class="alerta alerta-advertencia campo-ancho" role="alert" hidden>
+        No se puede marcar "Terminado" en estado "Esperando piezas".
+    </div>
+
+    <div class="botones">
+        <button class="btn btn-primario" type="button" disabled>Guardar diagnóstico</button>
+        <button class="btn btn-primario" type="button" disabled>Actualizar estado</button>
+        <a class="btn btn-secundario" href="/refacciones?folio={{folioUrl}}">Solicitar refacción</a>
+        <button class="btn btn-primario" type="button" disabled>Registrar pruebas y piezas</button>
+        <a class="btn btn-secundario" href="/mis-ordenes">Volver</a>
+    </div>
+</form>

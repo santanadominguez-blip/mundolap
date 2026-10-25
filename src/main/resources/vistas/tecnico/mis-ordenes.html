@@ -1,0 +1,46 @@
+<!-- P-11 Mis órdenes (técnico) (PRY03, págs. 72). FASE ACTUAL: solo la vista.
+     Para activar la funcionalidad: quitar onsubmit, habilitar "Aplicar filtro", llenar la tabla con las órdenes
+     asignadas (mostrar la marca "!" en las de prioridad Alta y el mensaje sin órdenes cuando aplique). -->
+<form class="formulario" method="get" action="/mis-ordenes" onsubmit="return false;">
+    <div class="campo">
+        <label for="estado">Filtrar por estado</label>
+        <select id="estado" name="estado">
+            <option value="">Todos</option>
+            <option value="RECIBIDO">Recibido</option>
+            <option value="PENDIENTE">Pendiente</option>
+            <option value="EN_REPARACION">En reparación</option>
+            <option value="ESPERANDO_PIEZAS">Esperando piezas</option>
+            <option value="TERMINADO">Terminado</option>
+        </select>
+    </div>
+    <div class="campo">
+        <label for="folio">Buscar por folio</label>
+        <input id="folio" name="folio" type="text" value="{{folio}}" placeholder="Ejemplo: OS-0001">
+    </div>
+    <div class="botones">
+        <button class="btn btn-primario" type="button" disabled>Aplicar filtro</button>
+    </div>
+
+    <div class="campo-ancho">
+        <div class="tabla-envoltura">
+            <table>
+                <thead>
+                    <tr><th>Folio</th><th>Cliente</th><th>Equipo</th><th>Problema reportado</th><th>Prioridad</th><th>Estado</th><th>Entrega estimada</th><th>Acción</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>—</td><td>—</td><td>—</td><td>—</td>
+                        <td>— <strong title="Prioridad alta" hidden>!</strong></td>
+                        <td>—</td><td>—</td>
+                        <td><a class="btn btn-chico" href="/mis-ordenes/detalle">Abrir</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Mensaje sin órdenes (elemento 6): oculto hasta que exista la lógica (RF-18). -->
+    <div id="mensajeSinOrdenes" class="alerta alerta-advertencia campo-ancho" role="alert" hidden>
+        No tienes órdenes asignadas.
+    </div>
+</form>

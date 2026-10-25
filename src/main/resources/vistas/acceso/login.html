@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Acceso del personal · Mundo Lap</title>
+  <link rel="stylesheet" href="/static/css/estilo.css">
+</head>
+<body class="pagina-login">
+  <main class="login-caja">
+    <p class="marca marca-grande">MUNDO LAP</p>
+    <h1>Acceso del personal</h1>
+    {{{errorHtml}}}
+    <form method="post" action="/login" class="formulario una-columna">
+      <label for="usuario">Usuario</label>
+      <input id="usuario" name="usuario" type="text" value="{{usuario}}" autocomplete="username" required autofocus>
+
+      <label for="clave">Contraseña</label>
+      <input id="clave" name="clave" type="password" autocomplete="current-password" required>
+
+      <button class="btn btn-primario btn-ancho" type="submit">Iniciar sesión</button>
+    </form>
+  </main>
+</body>
+</html>

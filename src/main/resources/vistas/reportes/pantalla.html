@@ -1,0 +1,64 @@
+<!-- P-16 Reportes de ventas, inventario y productividad (PRY03, pág. 79). FASE ACTUAL: solo la vista.
+     Para activar la funcionalidad: quitar onsubmit, habilitar los botones, llenar gráficas y tablas con la
+     consulta del periodo y registrar las rutas necesarias. Las pestañas solo alternan paneles (reportes.js). -->
+<form class="formulario" method="get" action="/reportes" onsubmit="return false;">
+    <div class="campo-ancho">
+        <div class="pestanas" role="tablist" aria-label="Tipo de reporte">
+            <button class="pestana activa" type="button" role="tab" aria-selected="true" data-pestana="ventas">Ventas</button>
+            <button class="pestana" type="button" role="tab" aria-selected="false" data-pestana="inventario">Inventario</button>
+            <button class="pestana" type="button" role="tab" aria-selected="false" data-pestana="productividad">Productividad</button>
+        </div>
+    </div>
+
+    <div class="campo">
+        <label for="periodoDel">Periodo del</label>
+        <input id="periodoDel" name="del" type="date">
+    </div>
+    <div class="campo">
+        <label for="periodoAl">Periodo al</label>
+        <input id="periodoAl" name="al" type="date">
+    </div>
+    <div class="botones">
+        <button class="btn btn-primario" type="button" disabled>Generar reporte</button>
+    </div>
+
+    <div class="campo-ancho" data-panel="ventas">
+        <div class="grafica">Gráfica de ingresos por semana</div>
+        <div class="tabla-envoltura">
+            <table>
+                <thead><tr><th>Ingresos</th><th>Servicios realizados</th></tr></thead>
+                <tbody><tr><td>—</td><td>—</td></tr></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="campo-ancho" data-panel="inventario" hidden>
+        <div class="tabla-envoltura">
+            <table>
+                <thead><tr><th>Refacciones más usadas</th><th>Stock</th></tr></thead>
+                <tbody><tr><td>—</td><td>—</td></tr></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="campo-ancho" data-panel="productividad" hidden>
+        <div class="grafica">Gráfica de órdenes atendidas por técnico</div>
+        <div class="tabla-envoltura">
+            <table>
+                <thead><tr><th>Técnico</th><th>Órdenes atendidas</th><th>Tiempo promedio de reparación</th><th>Meta</th><th>Cumplimiento</th></tr></thead>
+                <tbody><tr><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Mensaje sin datos (elemento 6): oculto hasta que exista la lógica. -->
+    <div id="mensajeSinDatos" class="alerta alerta-advertencia campo-ancho" role="alert" hidden>
+        No hay registros en el periodo seleccionado.
+    </div>
+
+    <div class="botones">
+        <button class="btn" type="button" disabled>Exportar PDF</button>
+        <a class="btn btn-secundario" href="/metas">Configurar metas</a>
+    </div>
+</form>
+<script src="/static/js/reportes.js"></script>

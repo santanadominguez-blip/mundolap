@@ -1,0 +1,42 @@
+{{{alertaHtml}}}
+<form class="formulario" method="post" action="/equipos/guardar">
+  <input type="hidden" name="idCliente" value="{{idCliente}}">
+
+  <div class="campo campo-ancho">
+    <label for="cliente">Cliente seleccionado</label>
+    <div class="con-boton">
+      <input id="cliente" type="text" value="{{clienteNombre}}" readonly>
+      <a class="btn btn-secundario" href="/clientes">Cambiar cliente</a>
+    </div>
+  </div>
+  <div class="campo">
+    <label for="tipoDispositivo">Tipo de dispositivo</label>
+    <select id="tipoDispositivo" name="tipoDispositivo">{{{tiposHtml}}}</select>
+  </div>
+  <div class="campo">
+    <label for="marca">Marca *</label>
+    <input id="marca" name="marca" type="text" value="{{marca}}" required>
+  </div>
+  <div class="campo">
+    <label for="modelo">Modelo *</label>
+    <input id="modelo" name="modelo" type="text" value="{{modelo}}" required>
+  </div>
+  <div class="campo">
+    <label for="numeroSerie">Número de serie</label>
+    <input id="numeroSerie" name="numeroSerie" type="text" value="{{numeroSerie}}">
+  </div>
+
+  <div class="botones">
+    <button class="btn btn-primario" type="submit">Guardar equipo</button>
+    {{{crearOrdenHtml}}}
+    <a class="btn btn-secundario" href="/panel">Cancelar</a>
+  </div>
+</form>
+
+<h2>Equipos del cliente</h2>
+<div class="tabla-envoltura">
+  <table>
+    <thead><tr><th>ID</th><th>Tipo</th><th>Marca</th><th>Modelo</th><th>Número de serie</th><th>Órdenes</th><th>Acciones</th></tr></thead>
+    <tbody>{{{filasHtml}}}</tbody>
+  </table>
+</div>

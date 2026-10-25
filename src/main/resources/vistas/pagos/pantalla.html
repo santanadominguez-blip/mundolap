@@ -1,0 +1,68 @@
+<!-- P-09 Registrar pago o abono (PRY03, págs. 68-69). FASE ACTUAL: solo la vista.
+     Para activar la funcionalidad: quitar onsubmit, habilitar los botones y registrar la ruta POST /pagos/registrar. -->
+<form class="formulario" method="post" action="/pagos/registrar" onsubmit="return false;">
+    <div class="campo campo-ancho">
+        <label for="folio">Folio de la orden</label>
+        <div class="con-boton">
+            <input id="folio" name="folio" type="text" value="{{folio}}" placeholder="Ejemplo: OS-0001">
+            <button class="btn" type="button" disabled>Buscar</button>
+        </div>
+    </div>
+
+    <section class="tarjeta campo-ancho">
+        <dl class="datos">
+            <dt>Cliente</dt><dd>—</dd>
+            <dt>Equipo</dt><dd>—</dd>
+            <dt>Monto total</dt><dd>—</dd>
+            <dt>Abonado</dt><dd>—</dd>
+            <dt>Saldo pendiente</dt><dd>—</dd>
+        </dl>
+    </section>
+
+    <div class="campo">
+        <label for="conceptoCobro">Concepto de cobro</label>
+        <select id="conceptoCobro" name="conceptoCobro">
+            <option value="ANTICIPO">Anticipo</option>
+            <option value="ABONO">Abono</option>
+            <option value="LIQUIDACION">Liquidación</option>
+        </select>
+    </div>
+    <div class="campo">
+        <label for="montoPagar">Monto a pagar</label>
+        <input id="montoPagar" name="montoPagar" type="number" min="0" step="0.01" placeholder="0.00">
+    </div>
+    <div class="campo">
+        <label for="metodoPago">Método de pago</label>
+        <select id="metodoPago" name="metodoPago">
+            <option value="EFECTIVO">Efectivo</option>
+            <option value="TARJETA">Tarjeta</option>
+            <option value="TRANSFERENCIA">Transferencia</option>
+        </select>
+    </div>
+    <div class="campo">
+        <label for="fechaPago">Fecha de pago</label>
+        <input id="fechaPago" type="text" value="{{fechaPago}}" readonly>
+    </div>
+
+    <!-- Alerta de monto (elemento 10): oculta hasta que exista la lógica (RF-42). -->
+    <div id="alertaMonto" class="alerta alerta-advertencia campo-ancho" role="alert" hidden>
+        El monto capturado no coincide con el saldo pendiente.
+    </div>
+
+    <div class="campo-ancho">
+        <h2>Pagos anteriores</h2>
+        <div class="tabla-envoltura">
+            <table>
+                <thead><tr><th>Fecha</th><th>Concepto</th><th>Método</th><th>Monto</th></tr></thead>
+                <tbody>
+                    <tr><td colspan="4" class="vacio">Busque una orden para ver su historial de pagos.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="botones">
+        <button class="btn btn-primario" type="button" disabled>Registrar pago</button>
+        <a class="btn btn-secundario" href="/panel">Cancelar</a>
+    </div>
+</form>

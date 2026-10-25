@@ -1,0 +1,57 @@
+<!-- P-14 Administración de usuarios (PRY03, pág. 77). FASE ACTUAL: solo la vista.
+     Para activar la funcionalidad: quitar onsubmit, habilitar los botones, llenar la tabla con las cuentas
+     existentes y registrar las rutas POST necesarias. -->
+<form class="formulario" method="post" action="/usuarios/crear" onsubmit="return false;">
+    <div class="campo-ancho">
+        <div class="tabla-envoltura">
+            <table>
+                <caption class="solo-lectores">Lista de usuarios</caption>
+                <thead><tr><th>ID</th><th>Nombre</th><th>Usuario</th><th>Rol</th><th>Estado</th></tr></thead>
+                <tbody>
+                    <tr><td colspan="5" class="vacio">Aquí se mostrarán las cuentas existentes.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="campo-ancho"><h2>Nueva cuenta</h2></div>
+
+    <div class="campo">
+        <label for="nombreCompleto">Nombre completo *</label>
+        <input id="nombreCompleto" name="nombreCompleto" type="text">
+    </div>
+    <div class="campo">
+        <label for="usuario">Usuario *</label>
+        <input id="usuario" name="usuario" type="text" autocomplete="off">
+    </div>
+    <div class="campo">
+        <label for="contrasena">Contraseña *</label>
+        <input id="contrasena" name="contrasena" type="password" autocomplete="new-password">
+    </div>
+    <div class="campo">
+        <label for="confirmarContrasena">Confirmar contraseña *</label>
+        <input id="confirmarContrasena" name="confirmarContrasena" type="password" autocomplete="new-password">
+    </div>
+    <div class="campo">
+        <label for="rol">Rol</label>
+        <select id="rol" name="rol">
+            <option value="RECEPCIONISTA">Recepcionista</option>
+            <option value="TECNICO">Técnico</option>
+            <option value="GERENTE">Gerente</option>
+        </select>
+    </div>
+    <div class="campo">
+        <label><input id="dosFactores" name="dosFactores" type="checkbox" value="1" class="casilla"> Activar autenticación de dos factores</label>
+    </div>
+
+    <!-- Mensaje de validación (elemento 7): oculto hasta que exista la lógica (RF-03, RF-07). -->
+    <div id="mensajeValidacion" class="alerta alerta-advertencia campo-ancho" role="alert" hidden>
+        Faltan datos obligatorios o el usuario ya existe.
+    </div>
+
+    <div class="botones">
+        <button class="btn btn-primario" type="button" disabled>Crear cuenta</button>
+        <button class="btn" type="button" disabled>Asignar rol</button>
+        <button class="btn btn-secundario" type="reset">Cancelar</button>
+    </div>
+</form>

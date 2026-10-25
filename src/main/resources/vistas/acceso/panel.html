@@ -1,0 +1,18 @@
+<p class="saludo">{{saludo}}</p>
+
+<section class="tarjeta">
+  <form class="fila-busqueda" method="get" action="/ordenes/ver">
+    <label for="folio">Buscar orden por folio</label>
+    <input id="folio" name="folio" type="text" placeholder="Ejemplo: OS-0001" required>
+    <button class="btn" type="submit">Buscar</button>
+    {{{accionNuevaHtml}}}
+  </form>
+</section>
+
+<h2>Órdenes por estado</h2>
+<div class="contadores">{{{contadoresHtml}}}</div>
+
+<h2>Alertas</h2>
+<section class="tarjeta">
+  <p class="vacio">No hay alertas por el momento.</p>
+</section>

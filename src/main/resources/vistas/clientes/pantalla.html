@@ -1,0 +1,50 @@
+<section class="tarjeta">
+  <form class="fila-busqueda" method="get" action="/clientes">
+    <label for="q">Buscar cliente</label>
+    <input id="q" name="q" type="search" value="{{q}}" placeholder="Nombre, teléfono o folio">
+    <button class="btn" type="submit">Buscar</button>
+  </form>
+</section>
+
+<div class="tabla-envoltura">
+  <table>
+    <caption class="solo-lectores">Resultados de la búsqueda de clientes</caption>
+    <thead><tr><th>ID</th><th>Nombre</th><th>Teléfono</th><th>Tipo</th><th>Órdenes activas</th><th>Acciones</th></tr></thead>
+    <tbody>{{{filasHtml}}}</tbody>
+  </table>
+</div>
+
+<h2>{{tituloFormulario}}</h2>
+{{{alertaHtml}}}
+<form class="formulario" method="post" action="/clientes/guardar">
+  <input type="hidden" name="idCliente" value="{{idCliente}}">
+
+  <div class="campo">
+    <label for="nombreCompleto">Nombre completo *</label>
+    <input id="nombreCompleto" name="nombreCompleto" type="text" value="{{nombreCompleto}}" required>
+  </div>
+  <div class="campo">
+    <label for="telefonoContacto">Teléfono de contacto *</label>
+    <input id="telefonoContacto" name="telefonoContacto" type="tel" inputmode="numeric" maxlength="14"
+           value="{{telefonoContacto}}" placeholder="10 dígitos" required>
+  </div>
+  <div class="campo">
+    <label for="correoElectronico">Correo electrónico</label>
+    <input id="correoElectronico" name="correoElectronico" type="email" value="{{correoElectronico}}">
+  </div>
+  <div class="campo">
+    <label for="tipoCliente">Tipo de cliente</label>
+    <select id="tipoCliente" name="tipoCliente">{{{tiposHtml}}}</select>
+  </div>
+  <div class="campo">
+    <label for="razonSocial">Razón social</label>
+    <input id="razonSocial" name="razonSocial" type="text" value="{{razonSocial}}" {{{fiscalAttr}}}>
+  </div>
+  <div class="campo">
+    <label for="rfc">RFC</label>
+    <input id="rfc" name="rfc" type="text" maxlength="13" value="{{rfc}}" {{{fiscalAttr}}}>
+  </div>
+
+  <div class="botones">{{{botonesHtml}}}</div>
+</form>
+<script src="/static/js/clientes.js"></script>

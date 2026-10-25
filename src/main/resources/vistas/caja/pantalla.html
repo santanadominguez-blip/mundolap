@@ -1,0 +1,51 @@
+<!-- P-15 Cierre de caja (PRY03, pág. 78). FASE ACTUAL: solo la vista.
+     Para activar la funcionalidad: quitar onsubmit, habilitar los botones y registrar las rutas POST necesarias. -->
+<form class="formulario" method="post" action="/caja/cerrar" onsubmit="return false;">
+    <div class="campo">
+        <label for="fechaInicial">Fecha inicial</label>
+        <input id="fechaInicial" name="fechaInicial" type="date">
+    </div>
+    <div class="campo">
+        <label for="fechaFinal">Fecha final</label>
+        <input id="fechaFinal" name="fechaFinal" type="date">
+    </div>
+    <div class="botones">
+        <button class="btn btn-primario" type="button" disabled>Generar</button>
+    </div>
+
+    <div class="campo-ancho">
+        <h2>Ingresos por método de pago</h2>
+        <div class="tabla-envoltura">
+            <table>
+                <thead><tr><th>Método de pago</th><th>N.º de pagos</th><th>Total</th></tr></thead>
+                <tbody>
+                    <tr><td>Efectivo</td><td>—</td><td>—</td></tr>
+                    <tr><td>Tarjeta</td><td>—</td><td>—</td></tr>
+                    <tr><td>Transferencia</td><td>—</td><td>—</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <section class="tarjeta campo-ancho">
+        <dl class="datos">
+            <dt>Total registrado</dt><dd>—</dd>
+            <dt>Diferencia</dt><dd>—</dd>
+        </dl>
+    </section>
+
+    <div class="campo">
+        <label for="totalReportado">Total reportado</label>
+        <input id="totalReportado" name="totalReportado" type="number" min="0" step="0.01" placeholder="0.00">
+    </div>
+
+    <!-- Alerta de diferencia (elemento 8): oculta hasta que exista la lógica (RF-61). -->
+    <div id="alertaDiferencia" class="alerta alerta-advertencia campo-ancho" role="alert" hidden>
+        Existe una diferencia entre lo registrado y lo reportado.
+    </div>
+
+    <div class="botones">
+        <button class="btn btn-primario" type="button" disabled>Confirmar cierre</button>
+        <button class="btn" type="button" disabled>Exportar PDF</button>
+    </div>
+</form>

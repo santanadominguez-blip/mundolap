@@ -1,0 +1,73 @@
+<!-- P-13 Solicitar refacción (PRY03, págs. 75-76). FASE ACTUAL: solo la vista.
+     Para activar la funcionalidad: quitar onsubmit, habilitar los botones, llenar el catálogo, la lista de
+     proveedores y las solicitudes, y registrar las rutas POST necesarias. -->
+<form class="formulario" method="post" action="/refacciones/solicitar" onsubmit="return false;">
+    <input type="hidden" name="folio" value="{{folioTxt}}">
+
+    <section class="tarjeta campo-ancho">
+        <dl class="datos">
+            <dt>Orden vinculada</dt><dd>{{folioTxt}}</dd>
+            <dt>Equipo</dt><dd>—</dd>
+        </dl>
+    </section>
+
+    <div class="campo campo-ancho">
+        <label for="buscarRefaccion">Buscar refacción</label>
+        <div class="con-boton">
+            <input id="buscarRefaccion" name="buscarRefaccion" type="text" placeholder="Nombre de la pieza">
+            <button class="btn" type="button" disabled>Buscar</button>
+        </div>
+    </div>
+
+    <div class="campo-ancho">
+        <h2>Catálogo con stock</h2>
+        <div class="tabla-envoltura">
+            <table>
+                <thead><tr><th>Pieza</th><th>Stock</th><th>Mínimo</th><th>Proveedor</th></tr></thead>
+                <tbody>
+                    <tr><td colspan="4" class="vacio">Busque una refacción para ver el catálogo.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="campo">
+        <label for="cantidad">Cantidad</label>
+        <input id="cantidad" name="cantidad" type="number" min="1" step="1" placeholder="1">
+    </div>
+    <div class="campo">
+        <label for="proveedor">Proveedor</label>
+        <select id="proveedor" name="proveedor">
+            <option value="">—</option>
+        </select>
+    </div>
+    <div class="campo">
+        <label for="tiempoEntrega">Tiempo estimado de entrega</label>
+        <input id="tiempoEntrega" name="tiempoEntrega" type="text" placeholder="Días">
+    </div>
+
+    <div class="campo-ancho">
+        <h2>Solicitudes de esta orden</h2>
+        <div class="tabla-envoltura">
+            <table>
+                <thead><tr><th>Pieza</th><th>Cant.</th><th>Estado</th><th>Acción</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>—</td><td>—</td><td>—</td>
+                        <td><button class="btn btn-chico" type="button" disabled>Marcar recibida</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Alerta de retraso o stock mínimo (elemento 8): oculta hasta que exista la lógica (RF-35, RF-36, RF-37). -->
+    <div id="alertaRefaccion" class="alerta alerta-advertencia campo-ancho" role="alert" hidden>
+        El pedido tiene retraso mayor al previsto.
+    </div>
+
+    <div class="botones">
+        <button class="btn btn-primario" type="button" disabled>Enviar solicitud</button>
+        <a class="btn btn-secundario" href="/mis-ordenes/detalle?folio={{folioUrl}}">Cancelar</a>
+    </div>
+</form>
