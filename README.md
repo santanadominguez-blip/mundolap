@@ -27,16 +27,8 @@ src/main/resources/static/   CSS y JS
 Cada módulo separa: **Controlador** (recibe la petición) → **Servicio** (reglas de negocio) → **Repositorio** (datos).
 El servicio no usa HTTP ni SQL, por eso se puede reutilizar tal cual.
 
-### Agregar un módulo nuevo (ej. Pagos)
-1. Crear el paquete `pagos` con su Modelo, Repositorio, Servicio, Controlador y una clase `PagosModulo implements Modulo`.
-2. Crear sus pantallas en `resources/vistas/pagos/`.
-3. Agregar `new PagosModulo(...)` a la lista `modulos` en `App.java`. El menú se actualiza solo.
-
 ### Conectar la base de datos (cuando el equipo termine el modelo relacional)
 Cada `XRepositorio` es una interfaz y hoy tiene una versión `XRepositorioMemoria`.
 Se crea `XRepositorioJdbc implements XRepositorio` y se cambia **una línea** en `App.java`.
 Controladores, servicios y vistas no cambian. Los nombres de los campos de los modelos coinciden con el diccionario de datos del PRY03.
 
-## Pendientes conocidos
-- `CostoDiagnosticoEjemplo`: tarifas de ejemplo; el PRY03 no define cómo se calcula el costo estimado.
-- Faltan las pantallas P-02 a P-04 (portal del cliente) y P-09 a P-17.
