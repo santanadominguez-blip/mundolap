@@ -38,3 +38,12 @@ Cada `XRepositorio` es una interfaz y hoy tiene una versión `XRepositorioMemori
 Se crea `XRepositorioJdbc implements XRepositorio` y se cambia **una línea** en `App.java`.
 Controladores, servicios y vistas no cambian. Los nombres de los campos de los modelos coinciden con el diccionario de datos del PRY03.
 
+Pendientes conocidos
+Sin base de datos: los datos viven en memoria y se pierden al detener el programa. También las sesiones.
+Datos de ejemplo: el paquete demo carga usuarios, clientes, equipos y órdenes de prueba; se elimina al conectar la BD.
+Seguridad de demostración: contraseñas con SHA-256 sin sal, sin tokens CSRF.
+CostoDiagnosticoEjemplo: tarifas de ejemplo (Celular y Tablet $250, Laptop $350, PC de escritorio y Otro $300); el PRY03 no define cómo se calcula el costo estimado.
+Lógica de P-09 a P-17: depende del modelo relacional (entidades Pago, Refacción, Proveedor, solicitudes, metas, desglose de costo, técnico asignado, entre otras).
+Portal del cliente (P-02 a P-04): no existe.
+Panel (P-05): las alertas y el aviso de entrega son texto fijo.
+Exportar a PDF (P-15 y P-16): pendiente de decidir cómo hacerlo sin librerías externas.
