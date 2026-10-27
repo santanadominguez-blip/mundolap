@@ -9,6 +9,7 @@ import mx.mundolap.clientes.ClienteRepositorioMemoria;
 import mx.mundolap.clientes.ClienteServicio;
 import mx.mundolap.clientes.ClientesModulo;
 import mx.mundolap.compartido.Modulo;
+import mx.mundolap.compartido.bd.ConexionBD;
 import mx.mundolap.compartido.web.Router;
 import mx.mundolap.compartido.web.Servidor;
 import mx.mundolap.compartido.web.Sesiones;
@@ -36,6 +37,9 @@ public final class App {
 
     public static void main(String[] args) throws Exception {
         int puerto = args.length > 0 ? Integer.parseInt(args[0]) : Integer.getInteger("puerto", 8080);
+
+        // ---- Base de datos: solo verifica la conexión y avisa; el sistema sigue con repositorios en memoria ----
+        ConexionBD.probar();
 
         // ---- Datos (hoy en memoria) ----
         UsuarioRepositorio usuarios = new UsuarioRepositorioMemoria();
