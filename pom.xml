@@ -11,11 +11,20 @@
     <name>Mundo Lap - Punto de venta y servicios de reparación</name>
 
     <properties>
-        <maven.compiler.release>17</maven.compiler.release>
+        <maven.compiler.release>25</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Clase principal: NetBeans la usa al presionar "Run" -->
         <exec.mainClass>mx.mundolap.App</exec.mainClass>
     </properties>
+
+    <dependencies>
+        <!-- Driver JDBC de PostgreSQL (conexión con la base de datos de pgAdmin) -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.4</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
